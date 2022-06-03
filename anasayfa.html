@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+  <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.2/css/all.css"
+    integrity="sha384-zrnmn8R8KkWl12rAZFt4yKjxplaDaT7/EUkKm7AovijfrQItFWR7O/JJn4DAa/gx" crossorigin="anonymous">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <title>Aksoy Ticaret-Anasayfa</title>
+
+  <link rel="icon" href="parcels.png" type="image/x-icon" />
+
+
+  <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+  <script src="sweetalert2.all.min.js"></script>
+
+
+  <script src="jquery-3.6.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    li {
+      margin-top: 15px;
+    }
+
+    li:hover {
+      background-color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="modal fade" id="StokSatis" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Stok Satış</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Stok Kodu</label>
+              <input type="text" class="form-control" id="SatisKod" required="required">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Satış Miktarı</label>
+              <input class="form-control" type="number" id="SatisAdet" required="required">
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          <button type="button" class="btn btn-primary" id="SatisKaydet">Kaydet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="StokGiris" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Stok Giriş</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Stok Kodu</label>
+              <input type="text" class="form-control" id="GirisKod">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Giriş Miktarı</label>
+              <input class="form-control" type="number" id="GirisAdet">
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          <button type="button" class="btn btn-primary" id="GirisKaydet">Kaydet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="YeniUrunEkle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Yeni Ürün Giriş</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Stok Kodu</label>
+              <input type="text" class="form-control" id="YeniKod">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Miktar</label>
+              <input class="form-control" type="number" id="YeniAdet">
+
+            </div>
+
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Ürün İsmi </label>
+              <input class="form-control" type="text" id="Boyut">
+
+            </div>
+
+
+
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Fiyat </label>
+              <input class="form-control" type="number" id="YeniFiyat">
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          <button type="button" class="btn btn-primary" id="YeniKaydet">Kaydet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="grid">
+    <div class="g-cold-4" style="float: left;">
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;height: 837px;">
+        <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32">
+
+          </svg>
+          <img src="parcels.png" alt="" width="30" height="24" style="margin-right: 15px;">
+          <span class="fs-4">AKSOY Ticaret</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="anasayfa.html" class="nav-link text-white">
+              <i class="fa-solid fa-barcode"></i>
+              Stok Sorgula
+            </a>
+          </li>
+          <hr>
+          <li>
+            <a href="#" class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#StokSatis">
+              <i class="fi fi-rr-dollar"></i>
+              Stok Satış
+            </a>
+          </li>
+          <hr>
+          <li>
+            <a href="#" class="nav-link text-white" aria-current="page" data-bs-toggle="modal"
+              data-bs-target="#StokGiris">
+              <i class="fi fi-rr-add"></i>
+              <!-- <i class="fa-light fa-cash-register"></i> -->
+              Stok Ekle
+            </a>
+          </li>
+          <hr>
+          <li>
+            <a href="#" class="nav-link text-white" aria-current="page" data-bs-toggle="modal"
+              data-bs-target="#YeniUrunEkle">
+              <i class="fi fi-rr-apps-add"></i>
+
+
+              Yeni Ürün
+            </a>
+          </li>
+          <hr>
+          <li>
+            <a href="Bayiler.html" class="nav-link text-white">
+              <i class="fa-solid fa-shop"></i>
+              Bayiler
+            </a>
+          </li>
+          <hr>
+          <li>
+            <a href="ustalar.html" class="nav-link text-white">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+              Ustalar
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+    <div class="g-col-8" style="float:right ;margin-top: 300px;margin-right:600px ;margin-bottom: 50px;">
+      <div class="row">
+        <div class="mb-3">
+          <p><strong>Ürün Barkod Numarasını Giriniz</strong></p>
+          <input type="text" class="form-control" id="sorgugiris" placeholder="123456789">
+        </div>
+        <div class="mb-3">
+
+          <button type="button" id="sorgu" class="btn btn-primary" accesskey="s"
+            style="margin-left:80px ;">Sorgula</button>
+          <br>
+
+        </div>
+      </div>
+      <div id="Dom" style="margin-top:50px; " class="row"></div>
+    </div>
+
+  </div>
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/dbfeb55d48.js" crossorigin="anonymous"></script>
+
+</body>
+<script>
+
+
+  const bildirim = require('sweetalert2');//Projeye Sweetalert Uyarılarını Dahil Ettim
+  const electron = require("electron");//Projeye Electronu Dahil Ettim
+  const { ipcRenderer } = electron;
+
+
+
+
+  $(document).ready(function () {//Sayfa Hazır Olduğunda Çalışacak Kodlar
+
+    var pencere = document.getElementById('StokSatis')
+    pencere.addEventListener('show.bs.modal', function (olay) {
+      var button = olay.relatedTarget
+      var alici = button.getAttribute('data-bs-whatever')
+      var modalgiris = pencere.querySelector('.modal-body input')
+      modalgiris.value = alici
+    })
+
+    $("#sorgu").click(function () {//Sorgu İd li Butona Basıldığında
+      $("#Dom").empty();//Yeni Bir Sorgulama Yapmadan Önce Boşaltıp Temizliyorum
+      //$("#id").text($("#sorgugiris").val()); 
+      ipcRenderer.send("sorgu", $("#sorgugiris").val());//Main.js ye Sorgulanacak Barkodu Gönderdim
+    })
+
+
+
+
+
+
+    ipcRenderer.on("donus", (event, data) => {//Satışı Yapılmak İstenen Ürün Sayısı Elimizdeki (Stoğumuzdaki) Miktardan Fazla İse Verilecek Uyarı
+      if (data == "fazla") {//Main Js den Verilen Cevap Fazla Ya Eşitse Verilecek Uyarı
+        bildirim.fire({
+          title: 'Opps!',
+          text: 'Satmak İstediğiniz Ürünün Stoğu Yeterli Değil!',
+          icon: 'error',
+          confirmButtonText: 'Kapat'
+        })
+      }
+
+    });
+
+
+
+    ipcRenderer.on("donus", (sorguolay, Sorguveri) => {//Main Js den Verimiz Sorguveriye Atanıyor 
+      if (Sorguveri == "yok") {//Eğer Yok Döndüyse
+        bildirim.fire({
+          title: 'Ürün Mevcut Değil',
+          text: 'Aratmış olduğunuz Barkoda Ait Ürün Bulunmamaktadır!',
+          icon: 'error',
+          confirmButtonText: 'Kapat'//Uyarı Dönücek
+        })
+      }
+      else {//Eğer Ürünümüz Veri Tabanında Kayıtlıysa Listelicez
+        $("#Dom").empty();//İlk Önce Temizleyip Boşaltıyroz.
+        $("#Dom").append(`
+        <table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Barkod</th>
+      <th scope="col">Ürün İsmi</th>
+      <th scope="col">Adet</th>
+      <th scope="col">Fiyat</th>
+      <th scope="col"></th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td>`+ Sorguveri.barkod + `</td>
+      <td>`+ Sorguveri.isim + `</td>
+      <td>`+ Sorguveri.miktar + `</td>
+      <td>`+ Sorguveri.fiyat + `</td>
+      <td></td>
+   
+    </tr>`)//Dom id li Sorgu Ekranımıza Sorgu Cevaplarımızı Yazdırıyoruz
+      }
+    });
+  });
+  $('#GirisKaydet').click(function () {//Stok Ekleme Butonuna Basıldığında(Elimizde Var Olan Ürünün Stoğunu Eklemek İçin Kullanıyoruz)
+    if ($('#GirisKod').val() == "" || $('#GirisAdet').val() == "")//Textboxların Dolu Olup olmadığını kontrol ettim.
+    {
+      bildirim.fire({
+        title: "Stok Kodu ve Adet Boş geçilemez ",//Başlık
+        text: '',//Altındaki Yazı
+        icon: 'error',//İkonun Resmi
+        confirmButtonText: 'Kapat'//Uyarıyı Kapatma Butonu
+        //Eğer Boş İse Uyarı Verdik.
+      })
+    }
+    else {//Eğer Textboxlar Boş değilse
+      var GirisBilgi = { girisbarkod: $('#GirisKod').val(), girisadet: $('#GirisAdet').val() }//Texboxlardan Aldığımız Veriyi Girisbilgiye Atıyoruz
+      ipcRenderer.send("StokGiris", GirisBilgi);//Girisbilgiyi Main.js ye Gönderiyoruz
+      bildirim.fire({
+        title: 'Ürün Stoğu Başarılı Şekilde Eklendi',
+        text: '',
+        icon: 'success',
+        confirmButtonText: 'Kapat'//Ürünün Stok Ekleme İşleminin Başarılı Olduğu Bildirimini Veriyor
+
+
+      })
+    }
+  })
+  $('#YeniKaydet').click(function () {//Veritabanında Olmayan Yeni Bir Ürün Ekleyeciğimiz Zaman
+    if ($('#YeniKod').val() == "" || $('#YeniAdet').val() == "" || $('#Boyut').val() == "" || $('#YeniFiyat').val() == "")//Textboxların kontrolü Yapıldı
+    {
+      bildirim.fire({
+        title: 'Lütfen Tüm Özellikleri Doldurunuz!',
+        text: '',
+        icon: 'error',
+        confirmButtonText: 'Kapat'//Boş ise Uyarı verdim
+      })
+    }
+    else {//TextBoxlar Boş Değilse
+      var YeniGirisBilgi = { yenikod: $('#YeniKod').val(), yeniadet: $('#YeniAdet').val(), yeniboyut: $('#Boyut').val(), yenifiyat: $('#YeniFiyat').val() }//Yeni Ürünümüzü Kaydettiğimiz Penceredeki Text Boxların Değerleri aldım
+      ipcRenderer.send("YeniGiris", YeniGirisBilgi);//Aldığım Değerleri Main.Js Ye Gönderdim
+
+      bildirim.fire({
+        title: 'Yeni Ürün Başarıyla Kaydedildi',
+        text: '',
+        icon: 'success',
+        confirmButtonText: 'Kapat'//Ürünü Eklediğimizde Başarılı olduğuna Dair Bildirim
+      })
+    }
+
+
+  })
+  $('#SatisKaydet').click(function () {//Satıs Yapma Butonuna Basıldığında Çalışacak Kod Bloğu
+
+    if ($('#SatisKod').val() == "" || $('#SatisAdet').val() == "")//Textboxların Dolu Olup olmadığını kontrol ettim.
+    {
+      bildirim.fire({
+        title: 'Stok Kodu ve Adet Boş geçilemez ',
+        text: '',
+        icon: 'error',
+        confirmButtonText: 'Kapat'//Eğer Boşsa Bir Uyarı Penceresi Verdim
+      })
+    }
+    else {//Eğer Boş Değilse Main.js ye Satılacak Barkodu Ve Mİktarını Yolladım 
+      var SatisBilgi = { satisbarkod: $('#SatisKod').val(), satisadet: $('#SatisAdet').val() }//Burda Textbooxlardaki veriyi aldım
+      ipcRenderer.send("StokSatis", SatisBilgi);//Gönderdim
+      bildirim.fire({
+        title: 'Ürün Başarılı Şekilde Satıldı',
+        text: '',
+        icon: 'success',
+        confirmButtonText: 'Kapat'//Swal Fire ile Satışın Başarılı olduğununun Bildirimini Verdim 
+      })
+    }
+  })
+
+</script>
+
+</html>

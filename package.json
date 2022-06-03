@@ -1,0 +1,19 @@
+{
+  "name": "stoktakip",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.1",
+    "electron": "^18.2.0",
+    "jquery": "^3.6.0",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.7.5",
+    "sweetalert2": "^11.4.13"
+  }
+}
